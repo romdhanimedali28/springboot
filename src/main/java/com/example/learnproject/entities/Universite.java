@@ -1,5 +1,7 @@
 package com.example.learnproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +24,7 @@ public class Universite implements Serializable {
     private String adresse;
 
     @OneToOne(mappedBy = "universite", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Foyer foyer;
 
 }

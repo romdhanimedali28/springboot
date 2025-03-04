@@ -17,6 +17,11 @@ public class FoyerController {
     @GetMapping
     public ResponseEntity<List<Foyer>> retrieveAllFoyers() {
         List<Foyer> foyers = foyerService.retrieveAllFoyers();
+        System.out.println("Retrieved Foyers:");
+        for (Foyer foyer : foyers) {
+            System.out.println("Foyer: " + foyer.getNomFoyer());
+            System.out.println("Universite: " + foyer.getUniversite().getNomUniversite());
+        }
         return ResponseEntity.ok(foyers);
     }
 
