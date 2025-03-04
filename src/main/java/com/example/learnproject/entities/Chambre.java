@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,4 +21,10 @@ public class Chambre implements Serializable {
     private long numeroChambre;
     @Enumerated(EnumType.STRING)
     private TypeChambre typeC;
+
+    @ManyToOne
+    private Bloc bloc;
+
+    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 }
