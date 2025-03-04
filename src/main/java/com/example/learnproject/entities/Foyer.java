@@ -1,5 +1,6 @@
 package com.example.learnproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +21,6 @@ public class Foyer implements Serializable {
     private long capaciteFoyer;
 
     @OneToOne
-    @JoinColumn(name = "universite_id")
     private Universite universite;
 
     @OneToMany(mappedBy = "foyer", cascade = CascadeType.ALL)
