@@ -8,8 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface IChambreRepository extends JpaRepository<Chambre, Long> {
-    List<Chambre> retrieveAllChambres();
-    Chambre addChambre(Chambre c);
-    Chambre updateChambre(Chambre c);
-    Chambre retrieveChambre(long idChambre);
+
 }
