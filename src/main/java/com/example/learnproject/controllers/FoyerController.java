@@ -20,14 +20,15 @@ public class FoyerController {
         System.out.println("Retrieved Foyers:");
         for (Foyer foyer : foyers) {
             System.out.println("Foyer: " + foyer.getNomFoyer());
-            System.out.println("Universite: " + foyer.getUniversite().getNomUniversite());
         }
         return ResponseEntity.ok(foyers);
     }
 
     @PostMapping
     public ResponseEntity<Foyer> addFoyer(@RequestBody Foyer foyer) {
+        System.out.println("Foyer: " + foyer.getNomFoyer());
         Foyer savedFoyer = foyerService.addFoyer(foyer);
+        System.out.println("Foyer: " + savedFoyer.getNomFoyer());
         return ResponseEntity.status(201).body(savedFoyer);
     }
 

@@ -33,4 +33,9 @@ public class UniversiteServiceImpl implements UniversiteService {
     public Universite retrieveUniversite(long idUniversite) {
         return universiteRepository.findById(idUniversite).orElse(null);
     }
+
+    @Override
+    public void removeUniversite(long idUniversite) {
+        universiteRepository.deleteById(idUniversite);
+    }
 }

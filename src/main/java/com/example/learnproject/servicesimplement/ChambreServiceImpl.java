@@ -33,4 +33,13 @@ public class ChambreServiceImpl implements ChambreService {
     public Chambre retrieveChambre(long idChambre) {
         return chambreRepository.findById(idChambre).orElse(null);
     }
+
+    @Override
+    public void removeChambre(long idChambre) {
+        if (chambreRepository.existsById(idChambre)) {
+            chambreRepository.deleteById(idChambre);
+        } else {
+            throw new IllegalArgumentException("Chambre with ID " + idChambre + " does not exist");
+        }
+    }
 }

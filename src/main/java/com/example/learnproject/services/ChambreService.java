@@ -9,4 +9,5 @@ public interface ChambreService {
     Chambre addChambre(Chambre c);
     Chambre updateChambre(Chambre c);
     Chambre retrieveChambre(long idChambre);
+    void removeChambre(long idChambre);
 }
