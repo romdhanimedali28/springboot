@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface IReservationRepository extends JpaRepository<Reservation, String> {
-    List<Reservation> retrieveAllReservations();
-    Reservation updateReservation(Reservation res);
-    Reservation retrieveReservation(String idReservation);
+
 }

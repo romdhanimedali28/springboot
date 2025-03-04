@@ -1,6 +1,7 @@
 package com.example.learnproject.servicesimplement;
 
 import com.example.learnproject.entities.Foyer;
+import com.example.learnproject.entities.Universite;
 import com.example.learnproject.repository.IFoyerRepository;
 import com.example.learnproject.services.FoyerService;
 import org.springframework.beans.factory.annotation.Autowired;
