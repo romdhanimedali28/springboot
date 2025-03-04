@@ -18,6 +18,10 @@ public class ReservationServiceImpl implements ReservationService {
     public List<Reservation> retrieveAllReservations() {
         return reservationRepository.findAll();
     }
+    @Override
+    public Reservation addReservation(Reservation reservation) {
+        return reservationRepository.save(reservation);
+    }
 
     @Override
     public Reservation updateReservation(Reservation res) {
@@ -27,5 +31,10 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation retrieveReservation(String idReservation) {
         return reservationRepository.findById(idReservation).orElse(null);
+    }
+
+    @Override
+    public void removeReservation(String idReservation) {
+        reservationRepository.deleteById(idReservation);
     }
 }

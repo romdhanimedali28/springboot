@@ -9,4 +9,6 @@ public interface UniversiteService {
     Universite addUniversite(Universite u);
     Universite updateUniversite(Universite u);
     Universite retrieveUniversite(long idUniversite);
+    void removeUniversite(long idUniversite);
+
 }

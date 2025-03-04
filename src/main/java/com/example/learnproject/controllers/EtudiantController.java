@@ -4,7 +4,6 @@ import com.example.learnproject.services.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -23,7 +22,7 @@ public class EtudiantController {
     @PostMapping
     public ResponseEntity<List<Etudiant>> addEtudiants(@RequestBody List<Etudiant> etudiants) {
         List<Etudiant> savedEtudiants = etudiantService.addEtudiants(etudiants);
-        return ResponseEntity.status(201).body(savedEtudiants); // 201 Created
+        return ResponseEntity.status(201).body(savedEtudiants);
     }
 
     @PutMapping("/{id}")

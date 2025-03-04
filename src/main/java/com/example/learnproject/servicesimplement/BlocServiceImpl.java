@@ -21,6 +21,12 @@ public class BlocServiceImpl implements BlocService {
     }
 
     @Override
+    public List<Bloc> getAllBlocs() {
+        return blocRepository.findAllBlocs();
+    }
+
+
+    @Override
     public Bloc addBloc(Bloc bloc) {
         return blocRepository.save(bloc);
     }
@@ -33,6 +39,11 @@ public class BlocServiceImpl implements BlocService {
     @Override
     public Bloc retrieveBloc(long idBloc) {
         return blocRepository.findById(idBloc).orElse(null);
+    }
+
+    @Override
+    public Bloc getBlocById(Long id) {
+        return blocRepository.findBlocById(id);
     }
 
     @Override
