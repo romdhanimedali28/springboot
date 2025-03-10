@@ -1,6 +1,7 @@
 package com.example.learnproject.controllers;
 
 import com.example.learnproject.entities.Chambre;
+import com.example.learnproject.entities.TypeChambre;
 import com.example.learnproject.services.ChambreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,8 +53,23 @@ public class ChambreController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeChambre(@PathVariable long id) {
         chambreService.removeChambre(id);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        return ResponseEntity.noContent().build();
     }
 
+
+    @GetMapping("/non-reserve")
+    public ResponseEntity<List<Chambre>> getChambresNonReserveParNomUniversiteEtTypeChambre(
+            @RequestParam String nomUniversite, @RequestParam TypeChambre type) {
+        List<Chambre> chambres = chambreService.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite, type);
+        return ResponseEntity.ok(chambres);
+    }
+
+
+    @GetMapping("/by-bloc-type")
+    public ResponseEntity<List<Chambre>> getChambresParBlocEtType(
+            @RequestParam long idBloc, @RequestParam TypeChambre typeC) {
+        List<Chambre> chambres = chambreService.getChambresParBlocEtType(idBloc, typeC);
+        return ResponseEntity.ok(chambres);
+    }
 
 }

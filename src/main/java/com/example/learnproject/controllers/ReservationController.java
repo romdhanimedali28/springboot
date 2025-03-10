@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -50,6 +51,13 @@ public class ReservationController {
     public ResponseEntity<Void> removeReservation(@PathVariable String id) {
         reservationService.removeReservation(id);
         return ResponseEntity.noContent().build(); // 204 No Content
+    }
+
+    @GetMapping("/by-annee-universite")
+    public ResponseEntity<List<Reservation>> getReservationParAnneeUniversitaireEtNomUniversite(
+            @RequestParam Date anneeUniversite, @RequestParam String nomUniversite) {
+        List<Reservation> reservations = reservationService.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversite, nomUniversite);
+        return ResponseEntity.ok(reservations);
     }
 
 }

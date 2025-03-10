@@ -38,4 +38,10 @@ public class UniversiteServiceImpl implements UniversiteService {
     public void removeUniversite(long idUniversite) {
         universiteRepository.deleteById(idUniversite);
     }
+
+    @Override
+    public Universite getUniversiteByNom(String nomUniversite) {
+        return universiteRepository.findByNomUniversite(nomUniversite)
+                .orElseThrow(() -> new RuntimeException("Universite not found"));
+    }
 }

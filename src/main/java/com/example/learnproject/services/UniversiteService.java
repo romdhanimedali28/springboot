@@ -10,5 +10,5 @@ public interface UniversiteService {
     Universite updateUniversite(Universite u);
     Universite retrieveUniversite(long idUniversite);
     void removeUniversite(long idUniversite);
-
+    Universite getUniversiteByNom(String nomUniversite);
 }
