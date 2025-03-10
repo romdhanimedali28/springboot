@@ -1,11 +1,14 @@
 package com.example.learnproject.servicesimplement;
 
 import com.example.learnproject.entities.Reservation;
+import com.example.learnproject.entities.Universite;
 import com.example.learnproject.repository.IReservationRepository;
+import com.example.learnproject.repository.IUniversiteRepository;
 import com.example.learnproject.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -13,6 +16,18 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     private IReservationRepository reservationRepository;
+
+    @Autowired
+    private IUniversiteRepository universiteRepository;
+
+
+    @Override
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite) {
+        Universite universite = universiteRepository.findByNomUniversite(nomUniversite)
+                .orElseThrow(() -> new RuntimeException("Universite not found"));
+
+        return reservationRepository.findByAnneeUniversitaireAndChambreBlocFoyerUniversite(anneeUniversite, universite);
+    }
 
     @Override
     public List<Reservation> retrieveAllReservations() {

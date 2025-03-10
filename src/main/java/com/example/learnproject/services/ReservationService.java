@@ -2,6 +2,7 @@ package com.example.learnproject.services;
 
 import com.example.learnproject.entities.Reservation;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ReservationService {
@@ -11,4 +12,6 @@ public interface ReservationService {
     Reservation updateReservation(Reservation res);
     Reservation retrieveReservation(String idReservation);
     void removeReservation(String idReservation);
+
+    List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite);
 }
