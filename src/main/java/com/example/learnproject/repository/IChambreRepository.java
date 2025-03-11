@@ -23,4 +23,7 @@ public interface IChambreRepository extends JpaRepository<Chambre, Long> {
     List<Chambre> findByBlocIdAndTypeC(@Param("idBloc") long idBloc, @Param("typeC") TypeChambre typeC);
 
 
+    @Query("SELECT c FROM Chambre c WHERE c.numeroChambre IN :numChambres")
+    List<Chambre> findByNumeroChambreIn(List<Long> numChambres);
+
 }

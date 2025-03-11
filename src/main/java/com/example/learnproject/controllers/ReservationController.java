@@ -60,4 +60,10 @@ public class ReservationController {
         return ResponseEntity.ok(reservations);
     }
 
+    @PostMapping("/ajouter/{idBloc}/{cinEtudiant}")
+    public ResponseEntity<Reservation> ajouterReservation(@PathVariable long idBloc, @PathVariable long cinEtudiant) {
+        Reservation reservation = reservationService.ajouterReservation(idBloc, cinEtudiant);
+        return ResponseEntity.ok(reservation);
+    }
+
 }

@@ -61,4 +61,7 @@ public class ChambreServiceImpl implements ChambreService {
             throw new IllegalArgumentException("Chambre with ID " + idChambre + " does not exist");
         }
     }
+
+
+
 }

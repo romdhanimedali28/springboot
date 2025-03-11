@@ -57,4 +57,12 @@ public class FoyerController {
         foyerService.removeFoyer(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/ajouter-et-affecter")
+    public ResponseEntity<Foyer> ajouterFoyerEtAffecterAUniversite(
+            @RequestBody Foyer foyer,
+            @RequestParam long idUniversite) {
+        Foyer savedFoyer = foyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+        return ResponseEntity.ok(savedFoyer);
+    }
 }

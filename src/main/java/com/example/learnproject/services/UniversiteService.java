@@ -11,4 +11,7 @@ public interface UniversiteService {
     Universite retrieveUniversite(long idUniversite);
     void removeUniversite(long idUniversite);
     Universite getUniversiteByNom(String nomUniversite);
+    Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite);
+    Universite desaffecterFoyerAUniversite(long idUniversite);
+
 }

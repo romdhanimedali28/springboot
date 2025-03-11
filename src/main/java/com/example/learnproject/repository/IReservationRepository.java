@@ -18,4 +18,5 @@ public interface IReservationRepository extends JpaRepository<Reservation, Strin
     List<Reservation> findByAnneeUniversitaireAndChambreBlocFoyerUniversite(
             @Param("anneeUniversitaire") Date anneeUniversitaire,
             @Param("universite") Universite universite);
+
 }
