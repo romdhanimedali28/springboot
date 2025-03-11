@@ -2,7 +2,9 @@ package com.example.learnproject.servicesimplement;
 
 
 import com.example.learnproject.entities.Bloc;
+import com.example.learnproject.entities.Chambre;
 import com.example.learnproject.repository.IBlocRepository;
+import com.example.learnproject.repository.IChambreRepository;
 import com.example.learnproject.services.BlocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ public class BlocServiceImpl implements BlocService {
 
     @Autowired
     private IBlocRepository blocRepository;
+    @Autowired
+    private IChambreRepository chambreRepository;
 
     @Override
     public List<Bloc> retrieveBlocs() {
@@ -49,5 +53,34 @@ public class BlocServiceImpl implements BlocService {
     @Override
     public void removeBloc(long idBloc) {
         blocRepository.deleteById(idBloc);
+    }
+
+
+
+    @Override
+    public Bloc affecterChambresABloc(List<Long> numChambre, long idBloc) {
+        Bloc bloc = blocRepository.findById(idBloc)
+                .orElseThrow(() -> new RuntimeException("Bloc avec ID " + idBloc + " n'existe pas."));
+
+        List<Chambre> chambres = chambreRepository.findByNumeroChambreIn(numChambre);
+        System.out.println(chambres);
+
+        if (chambres.size() != numChambre.size()) {
+            throw new RuntimeException("Certaines chambres spécifiées n'existent pas.");
+        }
+
+        for (Chambre chambre : chambres) {
+            if (chambre.getBloc() != null) {
+                throw new RuntimeException("La chambre " + chambre.getNumeroChambre() + " est déjà affectée à un bloc.");
+            }
+        }
+
+        for (Chambre chambre : chambres) {
+            chambre.setBloc(bloc);
+        }
+        chambreRepository.saveAll(chambres);
+
+        bloc.getChambres().addAll(chambres);
+        return blocRepository.save(bloc);
     }
 }

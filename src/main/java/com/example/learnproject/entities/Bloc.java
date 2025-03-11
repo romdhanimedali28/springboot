@@ -1,5 +1,6 @@
 package com.example.learnproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Bloc implements Serializable {
     private long capaciteBloc;
 
     @ManyToOne
+    @JsonIgnore
     private Foyer foyer;
 
     @OneToMany(mappedBy = "bloc", cascade = CascadeType.ALL)

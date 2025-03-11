@@ -53,4 +53,18 @@ public class UniversiteController {
         universiteService.removeUniversite(id);
         return ResponseEntity.noContent().build(); // 204 No Content
     }
+
+
+    @PutMapping("/affecter-foyer")
+    public ResponseEntity<Universite> affecterFoyerAUniversite(
+            @RequestParam long idFoyer,
+            @RequestParam String nomUniversite) {
+        Universite universite = universiteService.affecterFoyerAUniversite(idFoyer, nomUniversite);
+        return ResponseEntity.ok(universite);
+    }
+    @PutMapping("/{idUniversite}/desaffecter-foyer")
+    public ResponseEntity<Universite> desaffecterFoyerAUniversite(@PathVariable long idUniversite) {
+        Universite universite = universiteService.desaffecterFoyerAUniversite(idUniversite);
+        return ResponseEntity.ok(universite);
+    }
 }

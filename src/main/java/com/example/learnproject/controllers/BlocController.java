@@ -67,4 +67,9 @@ public class BlocController {
         blocService.removeBloc(id);
         return ResponseEntity.noContent().build(); // 204 No Content
     }
+
+    @PostMapping("/{idBloc}/affecter-chambres")
+    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre, @PathVariable long idBloc) {
+        return blocService.affecterChambresABloc(numChambre, idBloc);
+    }
 }

@@ -14,4 +14,5 @@ public interface ReservationService {
     void removeReservation(String idReservation);
 
     List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(Date anneeUniversite, String nomUniversite);
+    Reservation ajouterReservation(long idBloc, long cinEtudiant);
 }
